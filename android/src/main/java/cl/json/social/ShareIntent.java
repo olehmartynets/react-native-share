@@ -109,10 +109,14 @@ public abstract class ShareIntent {
     }
 
     protected ShareFile getFileShare(ReadableMap options) {
+         String filename = null;
+        if (ShareIntent.hasValidKey("filename", options)) {
+            filename = options.getString("filename");
+        }
         if (ShareIntent.hasValidKey("type", options)) {
-            return new ShareFile(options.getString("url"), options.getString("type"), options.getString("filename"), this.reactContext);
+            return new ShareFile(options.getString("url"), options.getString("type"), filename, this.reactContext);
         } else {
-            return new ShareFile(options.getString("url"), options.getString("filename"), this.reactContext);
+            return new ShareFile(options.getString("url"), filename, this.reactContext);
         }
     }
 
