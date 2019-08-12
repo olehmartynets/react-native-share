@@ -92,6 +92,7 @@ type Options = {
   excludedActivityTypes?: string,
   failOnCancel?: boolean,
   showAppsToView?: boolean,
+  filename?: string,
 };
 type MultipleOptions = {
   url?: string,
